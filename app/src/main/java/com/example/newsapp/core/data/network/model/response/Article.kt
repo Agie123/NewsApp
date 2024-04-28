@@ -1,7 +1,7 @@
 package com.example.newsapp.core.data.network.model.response
 
-data class ArticleDto(
-    val source: SourceDto,
+data class Article(
+    val source: Source,
     val author: String?,
     val title: String,
     val description: String?,

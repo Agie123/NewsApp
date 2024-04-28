@@ -21,15 +21,15 @@ class NewsViewModel @Inject constructor(private val newsRepository: NewsReposito
             _topHeadlines.value = Resource.Loading
 
             try {
-                val response = newsRepository.getTopHeadlines(country)
+                val response = newsRepository.getTopHeadlines(country = country)
 
                 if (response.isSuccessful) {
-                    _topHeadlines.value = Resource.Success(response.body()!!)
+                    _topHeadlines.value = Resource.Success(data = response.body()!!)
                 } else {
-                    _topHeadlines.value = Resource.Error("Error fetching top headlines")
+                    _topHeadlines.value = Resource.Error(message = "Error fetching top headlines")
                 }
             } catch (e: Exception) {
-                _topHeadlines.value = Resource.Error(e.message ?: "Unknown error")
+                _topHeadlines.value = Resource.Error(message = e.message ?: "Unknown error")
             }
         }
     }
