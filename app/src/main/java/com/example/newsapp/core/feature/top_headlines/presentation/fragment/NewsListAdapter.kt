@@ -1,4 +1,4 @@
-package com.example.newsapp.core.presentation.fragments.newsList
+package com.example.newsapp.core.feature.top_headlines.presentation.fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,15 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newsapp.R
-import com.example.newsapp.core.data.network.model.response.Article
+import com.example.newsapp.core.feature.article_details.domain.Article
 import com.example.newsapp.core.utils.OnArticleClickListener
 
-class NewsAdapter(
-    private val articles: List<Article>,
+class NewsListAdapter(
+    private var articles: List<Article>,
     private val listener: OnArticleClickListener
-) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+) : RecyclerView.Adapter<NewsListAdapter.NewsArticleViewHolder>() {
 
-    inner class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class NewsArticleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = view.findViewById(R.id.titleTextView)
         val descriptionTextView: TextView = view.findViewById(R.id.descriptionTextView)
         val imageView: ImageView = view.findViewById(R.id.imageView)
@@ -28,13 +28,13 @@ class NewsAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsArticleViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent, false)
 
-        return NewsViewHolder(view)
+        return NewsArticleViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NewsArticleViewHolder, position: Int) {
         val article = articles[position]
 
         holder.titleTextView.text = article.title
@@ -48,5 +48,10 @@ class NewsAdapter(
 
     override fun getItemCount(): Int {
         return articles.size
+    }
+
+    fun updateArticles(newArticles: List<Article>) {
+        articles = newArticles
+        notifyDataSetChanged() // Notify the adapter that the data has changed
     }
 }

@@ -1,4 +1,4 @@
-package com.example.newsapp.core.data.network.model.response
+package com.example.newsapp.core.feature.article_details.domain
 
 data class Article(
     val source: Source,

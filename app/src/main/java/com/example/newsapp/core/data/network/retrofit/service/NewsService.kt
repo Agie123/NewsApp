@@ -1,6 +1,6 @@
 package com.example.newsapp.core.data.network.retrofit.service
 
-import com.example.newsapp.core.data.network.model.response.NewsResponse
+import com.example.newsapp.core.data.network.model.response.TopHeadlinesResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -10,5 +10,5 @@ interface NewsService {
     suspend fun getTopHeadlines(
         @Query("country") country: String,
         @Query("apiKey") apiKey: String
-    ): Response<NewsResponse>
+    ): Response<TopHeadlinesResponse>
 }

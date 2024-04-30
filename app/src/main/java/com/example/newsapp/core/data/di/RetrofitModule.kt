@@ -13,18 +13,18 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
-        @Provides
-        @Singleton
-        fun provideRetrofit(): Retrofit {
-            return Retrofit.Builder()
-                .baseUrl(BASE_API_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        }
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_API_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
 
-        @Provides
-        @Singleton
-        fun provideNewsService(retrofit: Retrofit): NewsService {
-            return retrofit.create(NewsService::class.java)
-        }
+    @Provides
+    @Singleton
+    fun provideNewsService(retrofit: Retrofit): NewsService {
+        return retrofit.create(NewsService::class.java)
+    }
 }

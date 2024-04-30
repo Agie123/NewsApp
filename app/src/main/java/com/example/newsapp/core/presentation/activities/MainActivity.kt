@@ -7,7 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.newsapp.R
-import com.example.newsapp.core.presentation.fragments.newsList.NewsListFragment
+import com.example.newsapp.core.feature.top_headlines.presentation.fragment.NewsListFragment
 import com.example.newsapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
