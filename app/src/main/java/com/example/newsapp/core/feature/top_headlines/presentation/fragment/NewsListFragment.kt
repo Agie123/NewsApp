@@ -50,8 +50,7 @@ class NewsListFragment : Fragment(), OnArticleClickListener {
 
         topHeadLinesViewModel.topHeadlines.observe(viewLifecycleOwner) { result ->
             val articles = result.articles
-
-            adapter.updateArticles(articles)
+            adapter.updateArticles(newArticles = articles)
         }
 
         // Fetch top headlines
